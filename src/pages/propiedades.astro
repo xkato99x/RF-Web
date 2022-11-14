@@ -1,0 +1,133 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+// import { Icon } from "astro-icon";
+---
+
+<Layout title="propiedades">
+  <Navigation />
+  <h1>Nuestras Propiedades</h1>
+  <main>
+    <aside class="filters">
+      <span> Filtros</span>
+      <div class="filters__type">
+        <label for="tipo">Tipo</label>
+        <select name="tipo" id="tipo">
+          <option value="casa">Casa</option>
+          <option value="departamento">Departamento</option>
+          <option value="terreno">Terreno</option>
+        </select>
+      </div>
+      <div class="filters__price">
+        <label for="precio">Precio</label>
+        <input
+          type="range"
+          name="precio"
+          id="precio"
+          min="0"
+          max="1000000"
+          value="0"
+        />
+      </div>
+    </aside>
+    <section class="grid">
+      <article>
+        <img src="https://picsum.photos/200/300" alt="imagen de la propiedad" />
+        <h2>Propiedad 1</h2>
+        <p>Descripcion de la propiedad</p>
+        <p>$ 1.000.000</p>
+      </article>
+      <article>
+        <img src="https://picsum.photos/200/300" alt="imagen de la propiedad" />
+        <h2>Propiedad 2</h2>
+        <p>Descripcion de la propiedad</p>
+        <p>$ 1.000.000</p>
+      </article>
+      <article>
+        <img src="https://picsum.photos/200/300" alt="imagen de la propiedad" />
+        <h2>Propiedad 3</h2>
+        <p>Descripcion de la propiedad</p>
+        <p>$ 1.000.000</p>
+      </article>
+      <article>
+        <img src="https://picsum.photos/200/300" alt="imagen de la propiedad" />
+        <h2>Propiedad 4</h2>
+        <p>Descripcion de la propiedad</p>
+        <p>$ 1.000.000</p>
+      </article>
+      <article>
+        <img src="https://picsum.photos/200/300" alt="imagen de la propiedad" />
+        <h2>Propiedad 5</h2>
+        <p>Descripcion de la propiedad</p>
+        <p>$ 1.000.000</p>
+      </article>
+    </section>
+  </main>
+</Layout>
+
+<style lang="scss">
+  h1 {
+    padding-left: 2rem;
+  }
+  main {
+    display: flex;
+    padding: 2rem;
+
+    .filters {
+      flex-basis: 20%;
+      margin-right: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      span {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      &__type {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      &__price {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        position: relative;
+        > input:before {
+          content: "$" attr(min);
+          position: absolute;
+          top: 50px;
+          left: 0;
+          font-size: 0.8rem;
+        }
+        > input:after {
+          content: "$" attr(max);
+          position: absolute;
+          top: 50px;
+          right: 0;
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .grid {
+      flex-basis: 80%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 2rem;
+      article {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        img {
+          width: 100%;
+          height: 420px;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+</style>

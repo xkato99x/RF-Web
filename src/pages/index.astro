@@ -1,0 +1,166 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import CtaSection from "../components/CtaSection.astro";
+
+const image =
+  "https://images.unsplash.com/photo-1558661091-5cc1b64d0dc5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80";
+
+const featuredHouses = [
+  {
+    ubication: "Fracc. Los Alamos",
+    price: "$1,500,000",
+    image:
+      "https://images.unsplash.com/photo-1624303914335-9cdb04a30efc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nunc nisl ultricies nisl, nec ultricies elit nisl vel nisl. Sed euismod, nisl vel ultricies lacinia, nunc nisl ultricies nisl, nec ultricies elit nisl vel nisl.",
+  },
+  {
+    ubication: "Fracc. Bosques",
+    price: "$1,500,000",
+    image:
+      "https://images.unsplash.com/photo-1624303907355-427943d2d891?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nunc nisl ultricies nisl, nec ultricies elit nisl vel nisl. Sed euismod, nisl vel ultricies lacinia, nunc nisl ultricies nisl, nec ultricies elit nisl vel nisl.",
+  },
+  {
+    ubication: "Fracc. Remedio",
+    price: "$1,500,000",
+    image:
+      "https://images.unsplash.com/photo-1558661091-5cc1b64d0dc5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nunc nisl ultricies nisl, nec ultricies elit nisl vel nisl. Sed euismod, nisl vel ultricies lacinia, nunc nisl ultricies nisl, nec ultricies elit nisl vel nisl.",
+  },
+];
+---
+
+<Layout title="RF Inmobiliaria.">
+  <Navigation />
+  <div class="hero-container">
+    <main class="hero">
+      <section class="hero__body">
+        <h1 class="hero__title">
+          <span>RF Inmobiliaria</span>
+          <span class="hero__title__secondary">Asesoria para tu patrimonio</span
+          >
+        </h1>
+        <p class="hero__description">
+          Empresa dedicada a la venta de inmuebles en la ciudad de Durango,
+          Durango.
+        </p>
+      </section>
+    </main>
+    <img src={image} alt="hero" class="image" />
+  </div>
+  <CtaSection />
+  {
+    featuredHouses.map((house) => (
+      <section class="featured">
+        <div class="featured__img" data-image={house.image}>
+          <img src={house.image} alt="featured" />
+        </div>
+        <div class="featured__description">
+          <span class="title">{house.ubication}</span>
+          <span class="price">{house.price}</span>
+
+          <p class="text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+            voluptates, quod, quia, voluptate quae voluptatem quibusdam quos
+            accusantium quas dolorum quidem. Quisquam, quae. Quisquam, quae.
+          </p>
+        </div>
+      </section>
+    ))
+  }
+</Layout>
+
+<style lang="scss">
+  .hero-container {
+    display: flex;
+    gap: 1rem;
+    height: 40rem;
+    position: relative;
+
+    .hero {
+      padding: 2.5rem 2rem;
+      flex-basis: calc(100% / 6 * 3);
+
+      &__body {
+        text-align: left;
+        margin-left: 3rem;
+      }
+      &__title {
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 1.5;
+        margin-bottom: 3rem;
+        > span {
+          display: block;
+        }
+        &__secondary {
+          font-size: 2rem;
+          font-weight: 400;
+          color: rgb(49, 49, 49);
+        }
+      }
+      &__description {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: #666;
+      }
+    }
+    .image {
+      flex-basis: 50%;
+      object-fit: cover;
+      display: none;
+      @media screen and (min-width: 768px) {
+        width: auto;
+
+        display: block;
+        clip-path: polygon(32% 0, 100% 0%, 100% 100%, 0% 100%);
+      }
+    }
+  }
+
+  .featured {
+    display: flex;
+    height: 30rem;
+
+    &__img {
+      flex-basis: 50%;
+      aspect-ratio: 1/1.77;
+      height: auto;
+      > img {
+        aspect-ratio: 1/1.77;
+        height: 100%;
+        width: 100%;
+        object-fit: scale-down;
+      }
+    }
+    &__description {
+      flex-basis: 50%;
+      padding: 2rem;
+      grid-column: 2 / 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .title {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+      .price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: rgb(21, 129, 32);
+      }
+      .text {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: #666;
+      }
+    }
+    &:nth-child(odd) {
+      flex-direction: row-reverse;
+    }
+  }
+</style>

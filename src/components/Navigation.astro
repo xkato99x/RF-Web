@@ -1,0 +1,110 @@
+---
+import { Icon } from "astro-icon";
+
+const navLinks = [
+  {
+    to: "/nosotros",
+    label: "Nosotros",
+  },
+  {
+    to: "/propiedades",
+    label: "Propiedades",
+  },
+  {
+    to: "/contacto",
+    label: "Contacto",
+  },
+];
+---
+
+<nav class="navigation">
+  <a href="/" class="navigation__section navigation__logo">
+    <Icon class="logo" name="majesticons:home" />
+    <span class="name"> R&amp;F Inmobiliaria</span>
+  </a>
+  <div class="navigation__section navigation__links">
+    {
+      navLinks.map((link) => (
+        <a href={link.to} class="navigation__link">
+          {link.label}
+        </a>
+      ))
+    }
+  </div>
+  <div class="navigation__section navigation__media">
+    <a href="https://www.facebook.com/">
+      <Icon name="cib:whatsapp" class="whatsapp" />
+    </a>
+
+    <a href="www.whatsapp.com">
+      <Icon name="logos:instagram-icon" class="whatsapp" />
+    </a>
+  </div>
+</nav>
+
+<style lang="scss">
+  .navigation {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    &__section {
+      padding: 2.5rem 2rem;
+      border-left: 1px solid #eee;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      color: #000;
+      text-decoration: none;
+      > a {
+        text-decoration: none;
+      }
+    }
+    &__logo {
+      flex-basis: calc(100% / 6 * 3);
+      justify-content: flex-start;
+      .logo {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 1rem;
+      }
+      .name {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+    }
+    &__links {
+      flex-basis: calc(100% / 6 * 2);
+
+      a {
+        margin: 0 1rem;
+        color: #000;
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+    }
+    &__media {
+      display: flex;
+      align-items: center;
+      a {
+        margin: 0 1rem;
+        color: #000;
+        font-weight: 600;
+        font-size: 1.2rem;
+        > svg {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .whatsapp {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+</style>

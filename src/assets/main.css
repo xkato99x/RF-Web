@@ -1,0 +1,13 @@
+:root {
+  --accent: rgba(212, 33, 33, 0.5);
+  --hover: #2166d4;
+  --accent-gradient: linear-gradient(
+    45deg,
+    rgb(var(--accent)),
+    #da62c4 30%,
+    white 60%
+  );
+}
+html {
+  background-color: #f6f6f6;
+}
