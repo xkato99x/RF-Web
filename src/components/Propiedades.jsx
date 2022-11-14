@@ -6,13 +6,13 @@ import {
   ClockIcon,
   HomeIcon,
   XMarkIcon,
-} from "@heroicons/react/24/outline";
+} from "@heroicons/react/24/outline/index.js";
 import {
   ChevronRightIcon,
   ChevronUpDownIcon,
   EllipsisVerticalIcon,
   MagnifyingGlassIcon,
-} from "@heroicons/react/20/solid";
+} from "@heroicons/react/20/solid/index.js";
 
 const navigation = [
   { name: "Home", href: "/admin", icon: HomeIcon, current: false },
