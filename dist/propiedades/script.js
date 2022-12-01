@@ -7,9 +7,9 @@ function cargarEventListeners() {
         // mostrarInmueble(info);
         console.log("A")
     })
-    section.addEventListener("onclick", () => {
-        console.log("As")
-    })
+    // section.addEventListener("onclick", () => {
+    //     console.log("As")
+    // })
 }
 
 // funciones
