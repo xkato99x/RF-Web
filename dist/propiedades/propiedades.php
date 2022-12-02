@@ -65,7 +65,7 @@
         <label for="precio" class="astro-MGDH35U5">Precio</label>
         <input type="range" name="precio" id="precio" min="0" max="1000000" value="0" class="astro-MGDH35U5" />
       </div>
-      <div>
+      <div class="insert">
         <form action="upload.php" method="post" enctype="multipart/form-data">
           <p style="padding: 5px;">Inserte en la base de datos:</p><hr>
           <p>Dirección: </p>
@@ -73,9 +73,15 @@
           <p>Precio: </p>
           <input type="text" name="precio" value="" style="border: solid black 1px; border-radius: 5px;">
           <p>Descripción: </p>
-          <input type="text" name="descripcion" value="" style="border: solid black 1px; border-radius: 5px; margin-bottom: 10px;">
+          <input type="text" name="descripcion" value="" style="border: solid black 1px; border-radius: 5px; margin-bottom: 10px; width: 350px; height: 30px;">
+          <p>Tipo: </p>
+          <select name="tipoIn" id="tipoIn" style="border: solid black 1px; border-radius: 5px; margin-bottom: 15px;">
+            <option value="casaIn">Casa</option>
+            <option value="departamentoIn">Departamento</option>
+            <option value="terrenoIn">Terreno</option>
+          </select>
           <input type="file" name="image" />
-          <input type="submit" name="submit" value="UPLOAD" />
+          <input type="submit" name="submit" value="upload" />
 
         </form>
       </div>
@@ -83,7 +89,7 @@
 
     <section class="grid astro-MGDH35U5">
       <?php
-      include("loadProp.php");
+      require("loadProp.php");
       ?>
       <!-- <article class="astro-MGDH35U5">
         <img src="https://picsum.photos/200/300" alt="imagen de la propiedad" class="astro-MGDH35U5" />
