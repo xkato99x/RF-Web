@@ -1,18 +1,21 @@
-const section = document.querySelector(".grid")
-
 // eventos
+const formulario = document.querySelector('#formulario');
 cargarEventListeners()
 function cargarEventListeners() {
     document.addEventListener("DOMContentLoaded", () => {
-        // mostrarInmueble(info);
-        console.log("A")
-    })
-    // section.addEventListener("onclick", () => {
-    //     console.log("As")
-    // })
+        // clear()
+        console.log("DOMContentLoaded")
+        // productos.
+    });
+    
 }
+formulario.addEventListener('submit', clear);
 
 // funciones
-function mostrarInmueble() {
-    
+function clear(e) {
+    e.preventDefault();
+    // console.log("Limpiando")
+    // console.log('<?php echo "Hola mundo"; ?>')
+    // document.getElementById("productos").innerHTML = '';
+    // return false;
 }

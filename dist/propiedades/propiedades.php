@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="/src/css/admin.e9782f54.css" />
   <link rel="stylesheet" href="/src/css/admin.3c16e859.css" />
   <link rel="stylesheet" href="/src/css/propiedades.635be1f6.css" />
-  <script src="/dist/propiedades/script.js"></script>
 </head>
 
 <body>
@@ -53,11 +52,10 @@
       <span class="astro-MGDH35U5"> Filtros</span>
       <div class="filters__type astro-MGDH35U5">
         <label for="tipo" class="astro-MGDH35U5">Tipo</label>
-        <select name="tipo" id="tipo" class="astro-MGDH35U5">
+        <select name="tipo" id="tipo" class="astro-MGDH35U5" style="padding: 5px; border: solid 1px; border-radius: 5px;">
+          <option value="default">Seleccione</option>
           <option value="casa" class="astro-MGDH35U5">Casa</option>
-          <option value="departamento" class="astro-MGDH35U5">
-            Departamento
-          </option>
+          <option value="departamento" class="astro-MGDH35U5">Departamento</option>
           <option value="terreno" class="astro-MGDH35U5">Terreno</option>
         </select>
       </div>
@@ -65,9 +63,13 @@
         <label for="precio" class="astro-MGDH35U5">Precio</label>
         <input type="range" name="precio" id="precio" min="0" max="1000000" value="0" class="astro-MGDH35U5" />
       </div>
+      <form id="formulario" class="formulario" style="position: relative; margin-top: 50px; margin-bottom: 50px;">
+        <input class="button" type="submit" value="Filtrar" name="filtrar" style="position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); padding: 10px 50px 10px 50px; border: solid 1px; color: white; background-color: black; font-size: 16px; font-weight: bold;" />
+      </form>
       <div class="insert">
         <form action="upload.php" method="post" enctype="multipart/form-data">
-          <p style="padding: 5px;">Inserte en la base de datos:</p><hr>
+          <p style="padding: 5px; border-top: 15px;">Inserte en la base de datos:</p>
+          <hr>
           <p>Dirección: </p>
           <input type="text" name="direccion" value="" style="display:inline; border: solid black 1px; border-radius: 5px;">
           <p>Precio: </p>
@@ -87,9 +89,37 @@
       </div>
     </aside>
 
-    <section class="grid astro-MGDH35U5">
+    <div id="productos" class="grid astro-MGDH35U5">
+      <script type="text/javascript">
+        console.log("Desde script")
+        var productos = document.querySelector("#productos").previousElementSibling.children[3];
+        console.log(productos)
+        productos.addEventListener("click", filtro);
+
+        var filtro_Tipo = document.getElementById("tipo");
+        // console.log(filtro_Tipo);
+
+        var filtro_Precio = document.getElementById("precio");
+        // console.log(filtro_Precio);
+
+        function filtro(e) {
+          console.log(filtro_Tipo.value)
+          if (filtro_Tipo.value !== "default") {
+            e.preventDefault();
+            if (!document.querySelector("#productos").innerHTML == '') {
+              // document.querySelector("#productos").innerHTML = '';
+            }
+          }
+        }
+        console.log("Cierra script")
+      </script>
       <?php
       require("loadProp.php");
+      if (isset($_POST["filtrar"])) {
+        echo "desde if";
+      } else {
+        echo "desde else";
+      }
       ?>
       <!-- <article class="astro-MGDH35U5">
         <img src="https://picsum.photos/200/300" alt="imagen de la propiedad" class="astro-MGDH35U5" />
@@ -121,8 +151,9 @@
         <p class="astro-MGDH35U5">Descripcion de la propiedad</p>
         <p class="astro-MGDH35U5">$ 1.000.000</p>
       </article> -->
-    </section>
+    </div>
   </main>
+  <script src="/dist/propiedades/script.js"></script>
 </body>
 
 </html>

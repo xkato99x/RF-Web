@@ -5,11 +5,10 @@ $password = "pass12345";
 $dbName = "inmuebles";
 $connection = new mysqli($serverName, $userName, $password, $dbName) or die("No fue posible conectarse.");
 // echo "\nConectado.";
-?>
-<script type="text/javascript">
-  
-</script>
-<?php
+
+$precio = $_POST['precio'];
+$tipo = $_GET['tipo'];
+
 $result = $connection->query("SELECT * FROM inmuebles");
 
 while ($rows = $result->fetch_assoc()) {
