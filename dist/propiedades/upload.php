@@ -5,7 +5,7 @@ if(isset($_POST["submit"])){
         if ($check !== false) {
             $dbHost = 'localhost';
             $dbUsername = 'root';
-            $dbPassword = 'pass12345';
+            $dbPassword = 'root';
             $dbName = 'inmuebles';
             $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
 
@@ -48,7 +48,7 @@ if(isset($_POST["submit"])){
         }
     } catch(ValueError $e){
         // echo "entra try catch";
-        require("propiedades.php");
+        // require("propiedades.php");
     }
 } else{
     echo "Error";

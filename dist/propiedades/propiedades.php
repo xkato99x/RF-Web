@@ -116,9 +116,9 @@
       <?php
       require("loadProp.php");
       if (isset($_POST["filtrar"])) {
-        echo "desde if";
+        echo "<br>desde if";
       } else {
-        echo "desde else";
+        echo "<br>desde else";
       }
       ?>
       <!-- <article class="astro-MGDH35U5">
